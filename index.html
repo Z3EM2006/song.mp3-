@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة الأغاني 45</title>
+    <style>
+        :root {
+            --primary: #1db954;
+            --bg: #121212;
+            --card: #181818;
+            --text: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding-bottom: 180px;
+            text-align: center;
+        }
+
+        header { padding: 30px; background: linear-gradient(#1db95433, #121212); }
+        h1 { color: var(--primary); margin: 0; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .card:hover, .card.active {
+            border-color: var(--primary);
+            background: #282828;
+            transform: translateY(-3px);
+        }
+
+        .player-bar {
+            position: fixed;
+            bottom: 0; width: 100%;
+            background: #000;
+            border-top: 2px solid var(--primary);
+            padding: 15px 0;
+            z-index: 1000;
+        }
+
+        #track-info { font-weight: bold; color: var(--primary); margin-bottom: 10px; }
+
+        .progress-wrapper {
+            width: 90%; max-width: 600px;
+            height: 10px; background: #333;
+            margin: 10px auto; border-radius: 5px;
+            cursor: pointer; position: relative;
+        }
+
+        #progress-bar {
+            height: 100%; background: var(--primary);
+            width: 0%; border-radius: 5px;
+            pointer-events: none;
+        }
+
+        .controls { display: flex; justify-content: center; gap: 25px; align-items: center; }
+        .btn {
+            background: none; border: none; color: white;
+            font-size: 30px; cursor: pointer;
+        }
+
+        .play-btn {
+            background: var(--primary); color: black;
+            width: 55px; height: 55px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>قائمة تشغيل الـ 45 أغنية</h1>
+        <p>الترتيب: song.mp3 ثم song1.mp3 وما بعدها</p>
+    </header>
+
+    <div class="grid">
+        <div class="card" id="c1" onclick="loadTrack(1)">🎵 أغنية 1</div>
+        <div class="card" id="c2" onclick="loadTrack(2)">🎵 أغنية 2</div>
+        <div class="card" id="c3" onclick="loadTrack(3)">🎵 أغنية 3</div>
+        <div class="card" id="c4" onclick="loadTrack(4)">🎵 أغنية 4</div>
+        <div class="card" id="c5" onclick="loadTrack(5)">🎵 أغنية 5</div>
+        <div class="card" id="c6" onclick="loadTrack(6)">🎵 أغنية 6</div>
+        <div class="card" id="c7" onclick="loadTrack(7)">🎵 أغنية 7</div>
+        <div class="card" id="c8" onclick="loadTrack(8)">🎵 أغنية 8</div>
+        <div class="card" id="c9" onclick="loadTrack(9)">🎵 أغنية 9</div>
+        <div class="card" id="c10" onclick="loadTrack(10)">🎵 أغنية 10</div>
+        <div class="card" id="c11" onclick="loadTrack(11)">🎵 أغنية 11</div>
+        <div class="card" id="c12" onclick="loadTrack(12)">🎵 أغنية 12</div>
+        <div class="card" id="c13" onclick="loadTrack(13)">🎵 أغنية 13</div>
+        <div class="card" id="c14" onclick="loadTrack(14)">🎵 أغنية 14</div>
+        <div class="card" id="c15" onclick="loadTrack(15)">🎵 أغنية 15</div>
+        <div class="card" id="c16" onclick="loadTrack(16)">🎵 أغنية 16</div>
+        <div class="card" id="c17" onclick="loadTrack(17)">🎵 أغنية 17</div>
+        <div class="card" id="c18" onclick="loadTrack(18)">🎵 أغنية 18</div>
+        <div class="card" id="c19" onclick="loadTrack(19)">🎵 أغنية 19</div>
+        <div class="card" id="c20" onclick="loadTrack(20)">🎵 أغنية 20</div>
+        <div class="card" id="c21" onclick="loadTrack(21)">🎵 أغنية 21</div>
+        <div class="card" id="c22" onclick="loadTrack(22)">🎵 أغنية 22</div>
+        <div class="card" id="c23" onclick="loadTrack(23)">🎵 أغنية 23</div>
+        <div class="card" id="c24" onclick="loadTrack(24)">🎵 أغنية 24</div>
+        <div class="card" id="c25" onclick="loadTrack(25)">🎵 أغنية 25</div>
+        <div class="card" id="c26" onclick="loadTrack(26)">🎵 أغنية 26</div>
+        <div class="card" id="c27" onclick="loadTrack(27)">🎵 أغنية 27</div>
+        <div class="card" id="c28" onclick="loadTrack(28)">🎵 أغنية 28</div>
+        <div class="card" id="c29" onclick="loadTrack(29)">🎵 أغنية 29</div>
+        <div class="card" id="c30" onclick="loadTrack(30)">🎵 أغنية 30</div>
+        <div class="card" id="c31" onclick="loadTrack(31)">🎵 أغنية 31</div>
+        <div class="card" id="c32" onclick="loadTrack(32)">🎵 أغنية 32</div>
+        <div class="card" id="c33" onclick="loadTrack(33)">🎵 أغنية 33</div>
+        <div class="card" id="c34" onclick="loadTrack(34)">🎵 أغنية 34</div>
+        <div class="card" id="c35" onclick="loadTrack(35)">🎵 أغنية 35</div>
+        <div class="card" id="c36" onclick="loadTrack(36)">🎵 أغنية 36</div>
+        <div class="card" id="c37" onclick="loadTrack(37)">🎵 أغنية 37</div>
+        <div class="card" id="c38" onclick="loadTrack(38)">🎵 أغنية 38</div>
+        <div class="card" id="c39" onclick="loadTrack(39)">🎵 أغنية 39</div>
+        <div class="card" id="c40" onclick="loadTrack(40)">🎵 أغنية 40</div>
+        <div class="card" id="c41" onclick="loadTrack(41)">🎵 أغنية 41</div>
+        <div class="card" id="c42" onclick="loadTrack(42)">🎵 أغنية 42</div>
+        <div class="card" id="c43" onclick="loadTrack(43)">🎵 أغنية 43</div>
+        <div class="card" id="c44" onclick="loadTrack(44)">🎵 أغنية 44</div>
+        <div class="card" id="c45" onclick="loadTrack(45)">🎵 أغنية 45</div>
+    </div>
+
+    <div class="player-bar">
+        <div id="track-info">اختر أغنية للبدء</div>
+        <div class="progress-wrapper" onclick="seek(event)">
+            <div id="progress-bar"></div>
+        </div>
+        <div class="controls">
+            <button class="btn" onclick="prevTrack()">⏮</button>
+            <button class="btn play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+            <button class="btn" onclick="nextTrack()">⏭</button>
+        </div>
+    </div>
+
+    <audio id="mainAudio"></audio>
+
+    <script>
+        const audio = document.getElementById('mainAudio');
+        const playBtn = document.getElementById('playBtn');
+        const progBar = document.getElementById('progress-bar');
+        const info = document.getElementById('track-info');
+        
+        let currentIdx = 0;
+        const totalCards = 45;
+
+        function seek(event) {
+            if (!audio.src) return;
+            const rect = event.currentTarget.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const width = rect.width;
+            const percentage = x / width;
+            audio.currentTime = percentage * audio.duration;
+        }
+
+        function loadTrack(n) {
+            currentIdx = n;
+            
+            // المنطق الجديد لأسماء الملفات:
+            if (n === 1) {
+                audio.src = `song.mp3`; // أول ملف
+            } else {
+                audio.src = `song${n - 1}.mp3`; // يبدأ بـ song1 من الكارت رقم 2
+            }
+            
+            info.innerText = "تشغيل أغنية رقم " + n;
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+            document.getElementById('c'+n).classList.add('active');
+            audio.play();
+            playBtn.innerText = "⏸";
+        }
+
+        function togglePlay() {
+            if(!audio.src) { loadTrack(1); return; }
+            audio.paused ? (audio.play(), playBtn.innerText = "⏸") : (audio.pause(), playBtn.innerText = "▶");
+        }
+
+        function nextTrack() {
+            let n = currentIdx + 1;
+            if(n > totalCards) n = 1;
+            loadTrack(n);
+        }
+
+        function prevTrack() {
+            let n = currentIdx - 1;
+            if(n < 1) n = totalCards;
+            loadTrack(n);
+        }
+
+        audio.ontimeupdate = () => {
+            if(audio.duration) {
+                progBar.style.width = (audio.currentTime / audio.duration * 100) + "%";
+            }
+        };
+
+        audio.onended = nextTrack;
+    </script>
+</body>
+</html>
